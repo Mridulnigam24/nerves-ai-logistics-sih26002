@@ -1,0 +1,570 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   NERVES DESIGN SYSTEM: DUAL THEME ENGINE (DARK / LIGHT)
+   SIH26002: AI Logistics & Accessibility Intelligence Platform
+   ========================================================================== */
+
+:root,
+[data-theme="dark"],
+.dark {
+  /* Surface and Backgrounds */
+  --bg-primary: #020617;        /* slate-950: deep command canvas */
+  --bg-secondary: #0b1329;      /* navy operational contrast */
+  --surface: #0f172a;           /* slate-900: panel card surface */
+  --surface-elevated: #1e293b;  /* slate-800: elevated card / chip */
+  --surface-hover: #1e293b;
+  
+  /* Borders and Dividers */
+  --border: #1e293b;            /* slate-800 */
+  --border-subtle: #334155;     /* slate-700 */
+  --border-focus: #06b6d4;      /* cyan-500 */
+  
+  /* Typography Tokens */
+  --text-primary: #f8fafc;      /* slate-100: primary heading & body */
+  --text-secondary: #cbd5e1;    /* slate-300: operational labels */
+  --text-muted: #94a3b8;        /* slate-400: secondary descriptions */
+  --text-dim: #64748b;          /* slate-500 */
+  
+  /* NERVES Brand Accents */
+  --accent: #06b6d4;            /* cyan-500 */
+  --accent-hover: #0891b2;      /* cyan-600 */
+  --accent-muted: rgba(6, 182, 212, 0.15);
+  
+  /* Semantic Status Colors */
+  --critical: #ef4444;          /* Red-500 */
+  --critical-bg: rgba(239, 68, 68, 0.15);
+  --critical-border: rgba(239, 68, 68, 0.5);
+  
+  --warning: #f59e0b;           /* Amber-500 */
+  --warning-bg: rgba(245, 158, 11, 0.15);
+  --warning-border: rgba(245, 158, 11, 0.5);
+  
+  --success: #10b981;           /* Emerald-500 */
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --success-border: rgba(16, 185, 129, 0.5);
+  
+  --info: #3b82f6;              /* Blue-500 */
+  --info-bg: rgba(59, 130, 246, 0.15);
+  --info-border: rgba(59, 130, 246, 0.5);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"],
+.light {
+  /* Surface and Backgrounds (Restrained Enterprise Palette) */
+  --bg-primary: #F4F7FA;        /* Very light neutral/slightly cool background */
+  --bg-secondary: #EEF3F7;      /* Secondary cool neutral surface */
+  --surface: #FFFFFF;           /* Crisp pure white surface for operational cards */
+  --surface-elevated: #F8FAFC;  /* Elevated panel / chip surface */
+  --surface-hover: #F1F5F9;
+  
+  /* Borders and Dividers */
+  --border: #D7E0E8;            /* Restrained clean border */
+  --border-subtle: #CBD5E1;     /* Slate-300 */
+  --border-focus: #0284c7;      /* High-contrast professional blue */
+  
+  /* Typography Tokens (Strict WCAG AAA readability) */
+  --text-primary: #17212B;      /* Deep slate-navy / charcoal */
+  --text-secondary: #334155;    /* Slate-700 */
+  --text-muted: #52616D;        /* Secondary label text (accessible 5.5:1) */
+  --text-dim: #64748B;
+  
+  /* NERVES Brand Accents (Professional Enterprise Blue/Cyan) */
+  --accent: #0284c7;            /* Blue/cyan accent - non-neon */
+  --accent-hover: #0369a1;      /* Deepened hover */
+  --accent-muted: rgba(2, 132, 199, 0.1);
+  
+  /* Semantic Status Colors (Daytime Enterprise Clarity) */
+  --critical: #dc2626;          /* Red-600 */
+  --critical-bg: #FEF2F2;       /* Soft red tint */
+  --critical-border: #FCA5A5;
+  
+  --warning: #d97706;           /* Amber-600 */
+  --warning-bg: #FFFBEB;        /* Soft amber tint */
+  --warning-border: #FCD34D;
+  
+  --success: #059669;           /* Emerald-600 */
+  --success-bg: #ECFDF5;        /* Soft emerald tint */
+  --success-border: #6EE7B7;
+  
+  --info: #2563eb;              /* Blue-600 */
+  --info-bg: #EFF6FF;           /* Soft blue tint */
+  --info-border: #93C5FD;
+
+  color-scheme: light;
+}
+
+/* Base Body and Root Transitions */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+/* ==========================================================================
+   LIGHT MODE DESIGN SYSTEM IMPLEMENTATION
+   Systematic semantic token mapping across all operational panels & screens
+   ========================================================================== */
+
+[data-theme="light"] body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Layout Containers & Backgrounds */
+[data-theme="light"] .bg-slate-950 {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="light"] .bg-slate-900 {
+  background-color: var(--surface) !important;
+}
+
+[data-theme="light"] .bg-slate-900\/95,
+[data-theme="light"] .bg-slate-900\/90,
+[data-theme="light"] .bg-slate-900\/80,
+[data-theme="light"] .bg-slate-900\/70,
+[data-theme="light"] .bg-slate-900\/60,
+[data-theme="light"] .bg-slate-900\/50,
+[data-theme="light"] .bg-slate-900\/40 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="light"] .bg-slate-950\/95,
+[data-theme="light"] .bg-slate-950\/90,
+[data-theme="light"] .bg-slate-950\/80,
+[data-theme="light"] .bg-slate-950\/70,
+[data-theme="light"] .bg-slate-950\/60,
+[data-theme="light"] .bg-slate-950\/50,
+[data-theme="light"] .bg-slate-950\/40 {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="light"] .bg-slate-800 {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="light"] .bg-slate-800\/90,
+[data-theme="light"] .bg-slate-800\/80,
+[data-theme="light"] .bg-slate-800\/70,
+[data-theme="light"] .bg-slate-800\/60,
+[data-theme="light"] .bg-slate-800\/50,
+[data-theme="light"] .bg-slate-800\/40 {
+  background-color: #E2E8F0 !important;
+}
+
+/* Hover States for Cards & Buttons */
+[data-theme="light"] .hover\:bg-slate-800:hover,
+[data-theme="light"] .hover\:bg-slate-800\/90:hover,
+[data-theme="light"] .hover\:bg-slate-800\/80:hover {
+  background-color: #E2E8F0 !important;
+}
+
+[data-theme="light"] .hover\:bg-slate-900:hover,
+[data-theme="light"] .hover\:bg-slate-900\/80:hover {
+  background-color: #F1F5F9 !important;
+}
+
+[data-theme="light"] .hover\:bg-slate-950:hover {
+  background-color: #E2E8F0 !important;
+}
+
+/* Borders in Light Mode */
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-800\/80,
+[data-theme="light"] .border-slate-800\/60,
+[data-theme="light"] .border-slate-800\/50,
+[data-theme="light"] .border-slate-800\/40 {
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] .border-slate-700,
+[data-theme="light"] .border-slate-700\/80,
+[data-theme="light"] .border-slate-700\/60,
+[data-theme="light"] .border-slate-700\/50 {
+  border-color: var(--border-subtle) !important;
+}
+
+[data-theme="light"] .border-slate-600 {
+  border-color: #94A3B8 !important;
+}
+
+/* Typography Overrides for Light Mode */
+[data-theme="light"] .text-slate-100,
+[data-theme="light"] .text-slate-200 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .text-slate-300 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] .text-slate-400 {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .text-slate-500 {
+  color: var(--text-dim) !important;
+}
+
+/* Headings in Light Mode */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5 {
+  color: var(--text-primary) !important;
+}
+
+/* Retain high-contrast white text on solid colored action buttons */
+[data-theme="light"] .bg-blue-600,
+[data-theme="light"] .bg-cyan-600,
+[data-theme="light"] .bg-emerald-600,
+[data-theme="light"] .bg-red-600,
+[data-theme="light"] .bg-rose-600,
+[data-theme="light"] .bg-amber-600,
+[data-theme="light"] button.bg-blue-600,
+[data-theme="light"] button.bg-cyan-600,
+[data-theme="light"] button.bg-emerald-600,
+[data-theme="light"] button.bg-red-600,
+[data-theme="light"] button.bg-rose-600 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .bg-blue-600 *,
+[data-theme="light"] .bg-cyan-600 *,
+[data-theme="light"] .bg-emerald-600 *,
+[data-theme="light"] .bg-red-600 *,
+[data-theme="light"] .bg-rose-600 * {
+  color: inherit !important;
+}
+
+/* Brand Accent Overrides (Restrained Enterprise Blue/Cyan) */
+[data-theme="light"] .text-cyan-400,
+[data-theme="light"] .text-cyan-300 {
+  color: var(--accent) !important;
+}
+
+[data-theme="light"] .bg-cyan-950,
+[data-theme="light"] .bg-cyan-950\/80,
+[data-theme="light"] .bg-cyan-950\/60,
+[data-theme="light"] .bg-cyan-950\/50,
+[data-theme="light"] .bg-cyan-950\/40,
+[data-theme="light"] .bg-cyan-950\/20 {
+  background-color: var(--accent-muted) !important;
+}
+
+[data-theme="light"] .border-cyan-500\/40,
+[data-theme="light"] .border-cyan-500\/50,
+[data-theme="light"] .border-cyan-500\/60,
+[data-theme="light"] .border-cyan-800\/80 {
+  border-color: #7DD3FC !important;
+}
+
+/* Semantic Badges & States in Light Mode */
+/* 1. Accessible / Healthy (Green) */
+[data-theme="light"] .bg-emerald-950,
+[data-theme="light"] .bg-emerald-950\/80,
+[data-theme="light"] .bg-emerald-950\/70,
+[data-theme="light"] .bg-emerald-950\/50,
+[data-theme="light"] .bg-emerald-950\/30,
+[data-theme="light"] .bg-emerald-950\/20 {
+  background-color: var(--success-bg) !important;
+}
+
+[data-theme="light"] .text-emerald-400,
+[data-theme="light"] .text-emerald-300 {
+  color: var(--success) !important;
+}
+
+[data-theme="light"] .text-emerald-100,
+[data-theme="light"] .text-emerald-200 {
+  color: #065F46 !important;
+}
+
+[data-theme="light"] .border-emerald-500\/40,
+[data-theme="light"] .border-emerald-500\/50,
+[data-theme="light"] .border-emerald-500\/60,
+[data-theme="light"] .border-emerald-800 {
+  border-color: var(--success-border) !important;
+}
+
+/* 2. Restricted / Warning (Amber) */
+[data-theme="light"] .bg-amber-950,
+[data-theme="light"] .bg-amber-950\/80,
+[data-theme="light"] .bg-amber-950\/70,
+[data-theme="light"] .bg-amber-950\/50,
+[data-theme="light"] .bg-amber-950\/30,
+[data-theme="light"] .bg-amber-950\/20,
+[data-theme="light"] .bg-orange-950,
+[data-theme="light"] .bg-orange-950\/80,
+[data-theme="light"] .bg-orange-950\/70,
+[data-theme="light"] .bg-orange-950\/50,
+[data-theme="light"] .bg-orange-950\/30,
+[data-theme="light"] .bg-orange-950\/20 {
+  background-color: var(--warning-bg) !important;
+}
+
+[data-theme="light"] .text-amber-400,
+[data-theme="light"] .text-amber-300,
+[data-theme="light"] .text-orange-400,
+[data-theme="light"] .text-orange-300 {
+  color: var(--warning) !important;
+}
+
+[data-theme="light"] .text-amber-100,
+[data-theme="light"] .text-amber-200,
+[data-theme="light"] .text-orange-100,
+[data-theme="light"] .text-orange-200 {
+  color: #92400E !important;
+}
+
+[data-theme="light"] .border-amber-500\/40,
+[data-theme="light"] .border-amber-500\/50,
+[data-theme="light"] .border-amber-500\/60,
+[data-theme="light"] .border-amber-800,
+[data-theme="light"] .border-orange-500\/40,
+[data-theme="light"] .border-orange-500\/50,
+[data-theme="light"] .border-orange-500\/60,
+[data-theme="light"] .border-orange-800 {
+  border-color: var(--warning-border) !important;
+}
+
+/* 3. Blocked / Critical (Red) */
+[data-theme="light"] .bg-red-950,
+[data-theme="light"] .bg-red-950\/80,
+[data-theme="light"] .bg-red-950\/70,
+[data-theme="light"] .bg-red-950\/50,
+[data-theme="light"] .bg-red-950\/30,
+[data-theme="light"] .bg-red-950\/20,
+[data-theme="light"] .bg-rose-950,
+[data-theme="light"] .bg-rose-950\/80,
+[data-theme="light"] .bg-rose-950\/70,
+[data-theme="light"] .bg-rose-950\/50,
+[data-theme="light"] .bg-rose-950\/30,
+[data-theme="light"] .bg-rose-950\/20 {
+  background-color: var(--critical-bg) !important;
+}
+
+[data-theme="light"] .text-red-400,
+[data-theme="light"] .text-red-300,
+[data-theme="light"] .text-rose-400,
+[data-theme="light"] .text-rose-300 {
+  color: var(--critical) !important;
+}
+
+[data-theme="light"] .text-red-100,
+[data-theme="light"] .text-red-200,
+[data-theme="light"] .text-rose-100,
+[data-theme="light"] .text-rose-200 {
+  color: #991B1B !important;
+}
+
+[data-theme="light"] .border-red-500\/40,
+[data-theme="light"] .border-red-500\/50,
+[data-theme="light"] .border-red-500\/60,
+[data-theme="light"] .border-rose-500\/50,
+[data-theme="light"] .border-rose-500\/60,
+[data-theme="light"] .border-red-800 {
+  border-color: var(--critical-border) !important;
+}
+
+/* 4. Information / System (Blue) */
+[data-theme="light"] .bg-blue-950,
+[data-theme="light"] .bg-blue-950\/80,
+[data-theme="light"] .bg-blue-950\/60,
+[data-theme="light"] .bg-blue-950\/40,
+[data-theme="light"] .bg-blue-900\/60 {
+  background-color: var(--info-bg) !important;
+}
+
+[data-theme="light"] .text-blue-400,
+[data-theme="light"] .text-blue-300 {
+  color: var(--info) !important;
+}
+
+[data-theme="light"] .border-blue-500\/30,
+[data-theme="light"] .border-blue-700\/40 {
+  border-color: var(--info-border) !important;
+}
+
+/* 5. Purple / Database (Supabase) */
+[data-theme="light"] .bg-purple-950 {
+  background-color: #FAF5FF !important;
+}
+[data-theme="light"] .text-purple-400 {
+  color: #7E22CE !important;
+}
+[data-theme="light"] .border-purple-800 {
+  border-color: #D8B4FE !important;
+}
+
+/* ==========================================================================
+   INPUTS, FORMS, SELECTS, AND TEXTAREAS
+   ========================================================================== */
+
+[data-theme="light"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background-color: #FFFFFF !important;
+  color: #17212B !important;
+  border-color: #CBD5E1 !important;
+}
+
+[data-theme="light"] select option {
+  background-color: #FFFFFF !important;
+  color: #17212B !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] select:focus,
+[data-theme="light"] textarea:focus {
+  border-color: var(--accent) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2) !important;
+}
+
+/* Range input track */
+[data-theme="light"] input[type="range"] {
+  accent-color: var(--accent);
+}
+
+/* ==========================================================================
+   TABLES & LISTS
+   ========================================================================== */
+
+[data-theme="light"] table {
+  background-color: #FFFFFF;
+}
+
+[data-theme="light"] thead tr {
+  background-color: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+[data-theme="light"] th {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] td {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+[data-theme="light"] tbody tr:hover {
+  background-color: #F8FAFC !important;
+}
+
+/* ==========================================================================
+   MODALS, BACKDROPS, & OVERLAYS
+   ========================================================================== */
+
+[data-theme="light"] .fixed.inset-0.bg-slate-950\/80,
+[data-theme="light"] .fixed.inset-0.bg-slate-950\/90,
+[data-theme="light"] .fixed.inset-0.bg-black\/80,
+[data-theme="light"] .fixed.inset-0.bg-black\/70,
+[data-theme="light"] .fixed.inset-0.bg-slate-950\/70 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Modal and Drawer Shadow hierarchy in Light Mode */
+[data-theme="light"] .shadow-2xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .shadow-xl {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* ==========================================================================
+   GIS MAP STYLING & LEAFLET DUAL-THEME ADAPTATION
+   Requirement 10 & 11: Seamless map presentation in both themes
+   ========================================================================== */
+
+/* Dark Mode: Technical Emergency Map filter on standard tiles */
+[data-theme="dark"] .leaflet-tile-pane,
+:root:not([data-theme="light"]) .leaflet-tile-pane {
+  filter: brightness(0.65) invert(1) contrast(2.8) hue-rotate(200deg) saturate(0.28) brightness(0.72);
+}
+
+/* Light Mode: Crisp Daylight Map presentation */
+[data-theme="light"] .leaflet-tile-pane {
+  filter: saturate(0.95) contrast(1.02);
+}
+
+/* Leaflet UI Controls adapt to theme */
+.leaflet-container {
+  background-color: var(--bg-primary) !important;
+  font-family: inherit;
+}
+
+[data-theme="light"] .leaflet-control-zoom a {
+  background-color: #FFFFFF !important;
+  color: #17212B !important;
+  border-color: #D7E0E8 !important;
+}
+
+[data-theme="light"] .leaflet-control-zoom a:hover {
+  background-color: #F8FAFC !important;
+}
+
+[data-theme="light"] .leaflet-popup-content-wrapper {
+  background-color: #FFFFFF !important;
+  color: #17212B !important;
+  border: 1px solid #D7E0E8 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .leaflet-popup-tip {
+  background-color: #FFFFFF !important;
+}
+
+[data-theme="light"] .leaflet-bar {
+  border-color: #D7E0E8 !important;
+}
+
+/* ==========================================================================
+   RECHARTS SVG TOOLTIPS & GRIDS
+   ========================================================================== */
+
+[data-theme="light"] .recharts-cartesian-grid line {
+  stroke: #E2E8F0 !important;
+}
+
+[data-theme="light"] .recharts-text {
+  fill: #475569 !important;
+}
+
+[data-theme="light"] .recharts-default-tooltip {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D7E0E8 !important;
+  color: #17212B !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .recharts-tooltip-label {
+  color: #17212B !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   CODE BLOCKS & MONOSPACE
+   ========================================================================== */
+
+[data-theme="light"] pre,
+[data-theme="light"] code {
+  background-color: #EEF3F7 !important;
+  color: #17212B !important;
+  border-color: #CBD5E1 !important;
+}

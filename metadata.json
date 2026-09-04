@@ -1,0 +1,6 @@
+{
+  "name": "NERVES - AI Logistics & Accessibility Platform",
+  "description": "AI-Powered Logistics & Accessibility Intelligence Platform for India's North Eastern Region (SIH26002). Predicting route accessibility, disruption risks, and supply continuity.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
